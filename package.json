@@ -13,7 +13,8 @@
     "lint:prettier:fix": "yarn prettier --write \"**/*.{js,json,ts,vue,html}\"",
     "lint:stylelint": "yarn stylelint --cache \"**/*.{html,css,vue}\"",
     "lint:stylelint:fix": "yarn lint:stylelint --fix",
-    "lint": "yarn lint:eslint && yarn lint:prettier && yarn lint:stylelint"
+    "lint": "yarn lint:eslint && yarn lint:prettier && yarn lint:stylelint",
+    "lint:fix": "yarn lint:eslint:fix && yarn lint:prettier:fix && yarn lint:stylelint:fix"
   },
   "dependencies": {
     "firebase": "^9.17.2",

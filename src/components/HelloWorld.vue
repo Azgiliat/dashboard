@@ -38,6 +38,7 @@ export default defineComponent({
 <style scoped>
 .read-the-docs {
   @apply font-primary;
+
   color: #888;
 }
 </style>
