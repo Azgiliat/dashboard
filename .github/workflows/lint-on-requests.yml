@@ -1,0 +1,10 @@
+name: Lint on requests
+on:
+  pull_request:
+    types: [opened, edited]
+jobs:
+  lint:
+    runs-on: Alpine-latest
+    steps:
+      - run: yarn
+      - run: yarn lint
