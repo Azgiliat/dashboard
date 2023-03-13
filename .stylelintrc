@@ -1,0 +1,39 @@
+{
+  "extends": [
+    "stylelint-config-html",
+    "stylelint-config-standard",
+    "stylelint-config-rational-order",
+  ],
+  "rules": {
+    "selector-max-attribute": 1,
+    "selector-max-class": 3,
+    "selector-max-combinators": 2,
+    "selector-max-compound-selectors": 2,
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "tailwind",
+          "apply",
+          "variants",
+          "responsive",
+          "screen"
+        ]
+      }
+    ],
+    "no-descending-specificity": null,
+    "selector-class-pattern": [
+      "[a-z]+",
+      {
+        "resolveNestedSelectors": true
+      }
+    ],
+    "function-no-unknown": [true,
+      {
+        "ignoreFunctions": [
+          "theme"
+        ]
+      }
+    ]
+  }
+}
