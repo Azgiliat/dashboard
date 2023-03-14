@@ -1,59 +1,59 @@
 @font-face {
+  font-weight: normal;
   font-family: 'Open Sans';
+  font-style: normal;
   src: local('Open Sans Regular'), local('OpenSans-Regular'),
   url('assets/fonts/open-sans/OpenSans-Regular.eot?#iefix') format('embedded-opentype'),
   url('assets/fonts/open-sans/OpenSans-Regular.woff2') format('woff2'),
   url('assets/fonts/open-sans/OpenSans-Regular.woff') format('woff'),
   url('assets/fonts/open-sans/OpenSans-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 
 @font-face {
+  font-weight: 600;
   font-family: 'Open Sans';
+  font-style: normal;
   src: url('assets/fonts/open-sans/OpenSans-SemiBold.eot');
   src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'),
   url('assets/fonts/open-sans/OpenSans-SemiBold.eot?#iefix') format('embedded-opentype'),
   url('assets/fonts/open-sans/OpenSans-SemiBold.woff2') format('woff2'),
   url('assets/fonts/open-sans/OpenSans-SemiBold.woff') format('woff'),
   url('assets/fonts/open-sans/OpenSans-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
 }
 
 @font-face {
+  font-weight: bold;
   font-family: 'Open Sans';
+  font-style: normal;
   src: url('assets/fonts/open-sans/OpenSans-Bold.eot');
   src: local('Open Sans Bold'), local('OpenSans-Bold'),
   url('assets/fonts/open-sans/OpenSans-Bold.eot?#iefix') format('embedded-opentype'),
   url('assets/fonts/open-sans/OpenSans-Bold.woff2') format('woff2'),
   url('assets/fonts/open-sans/OpenSans-Bold.woff') format('woff'),
   url('assets/fonts/open-sans/OpenSans-Bold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
 }
 
 @font-face {
+  font-weight: 800;
   font-family: 'Open Sans';
+  font-style: normal;
   src: url('assets/fonts/open-sans/OpenSans-ExtraBold.eot');
   src: local('Open Sans ExtraBold'), local('OpenSans-ExtraBold'),
   url('assets/fonts/open-sans/OpenSans-ExtraBold.eot?#iefix') format('embedded-opentype'),
   url('assets/fonts/open-sans/OpenSans-ExtraBold.woff2') format('woff2'),
   url('assets/fonts/open-sans/OpenSans-ExtraBold.woff') format('woff'),
   url('assets/fonts/open-sans/OpenSans-ExtraBold.ttf') format('truetype');
-  font-weight: 800;
-  font-style: normal;
 }
 
 @font-face {
+  font-weight: 300;
   font-family: 'Open Sans';
+  font-style: normal;
   src: url('assets/fonts/open-sans/OpenSans-Light.eot');
   src: local('Open Sans Light'), local('OpenSans-Light'),
   url('assets/fonts/open-sans/OpenSans-Light.eot?#iefix') format('embedded-opentype'),
   url('assets/fonts/open-sans/OpenSans-Light.woff2') format('woff2'),
   url('assets/fonts/open-sans/OpenSans-Light.woff') format('woff'),
   url('assets/fonts/open-sans/OpenSans-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
 }
 

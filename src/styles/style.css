@@ -2,10 +2,12 @@
 @import url("./open-sans-font.css");
 
 @tailwind base;
+
 @layer base {
   html {
     @apply font-primary;
   }
 }
+
 @tailwind components;
 @tailwind utilities;
