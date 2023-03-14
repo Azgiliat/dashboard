@@ -11,9 +11,16 @@ import {
 } from '@/http/login';
 
 export const useLoginStore = defineStore('login', () => {
-  const user = ref<User | null>(null);
+  const localUser = localStorage.getItem('fb-user');
+  const user = ref<User | null>(localUser ? JSON.parse(localUser) : null);
   const setUser = (newUser: User | null) => {
     user.value = newUser;
+
+    if (newUser === null) {
+      localStorage.removeItem('fb-user');
+    } else {
+      localStorage.setItem('fb-user', JSON.stringify(newUser));
+    }
   };
   function login(credentials: LoginCredentials) {
     return loginRequest(credentials);

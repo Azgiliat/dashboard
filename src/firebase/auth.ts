@@ -24,3 +24,5 @@ export const registerNewUserWithEmail = (
   credentials: CreateWithEmailCredentials,
 ) =>
   createUserWithEmailAndPassword(auth, credentials.email, credentials.password);
+
+export const getCurrentUser = () => auth.currentUser;

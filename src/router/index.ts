@@ -13,8 +13,6 @@ const router = createRouter({
 router.beforeEach((to) => {
   const userStore = useLoginStore();
 
-  console.log(userStore.user);
-
   if (to.name !== RouteName.LOGIN && !userStore.user) {
     return {
       name: RouteName.LOGIN,
