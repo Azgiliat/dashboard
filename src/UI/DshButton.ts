@@ -9,15 +9,13 @@ type Props = {
   text: string;
 };
 
-const BaseButton = <FunctionalComponent<Props>>function (props) {
+const DshButton = <FunctionalComponent<Props>>function (props, ctx) {
   return h(
     'button',
     {
       class: [
         'rounded-xl',
-        'px-8',
-        'py-4',
-        'text-white',
+        'px-8 py-3',
         {
           'bg-primary': props.type === UITypes.PRIMARY,
           'bg-secondary': props.type === UITypes.SECONDARY,
@@ -25,14 +23,23 @@ const BaseButton = <FunctionalComponent<Props>>function (props) {
         },
       ],
     },
-    h('p', props.text),
+    props.text
+      ? h(
+          'span',
+          {
+            class: ['text-white text-xl font-bold font-primary'],
+          },
+          props.text,
+        )
+      : ctx.slots.default?.(),
   );
 };
 
-BaseButton.props = {
+DshButton.props = {
   text: {
     type: String,
-    required: true,
+    required: false,
+    default: '',
   },
   type: {
     type: Number as PropType<UITypes>,
@@ -41,4 +48,4 @@ BaseButton.props = {
   },
 };
 
-export default BaseButton;
+export default DshButton;
