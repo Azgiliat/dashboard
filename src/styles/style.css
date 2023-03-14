@@ -1,5 +1,11 @@
-@import url("./fonts.css");
+@import url("./cairo-font.css");
+@import url("./open-sans-font.css");
 
 @tailwind base;
+@layer base {
+  html {
+    @apply font-primary;
+  }
+}
 @tailwind components;
 @tailwind utilities;

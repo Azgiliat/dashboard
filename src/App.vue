@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="min-h-screen flex-col flex">
     <computed-layout />
   </section>
 </template>
