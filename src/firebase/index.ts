@@ -7,6 +7,8 @@ const firebaseConfig = {
   storageBucket: 'my-little-jira.appspot.com',
   messagingSenderId: '319920519366',
   appId: '1:319920519366:web:f9ac957e38f54d6a0cffc7',
+  databaseURL:
+    'https://my-little-jira-default-rtdb.europe-west1.firebasedatabase.app',
 };
 
 export const firebaseApp = initializeApp(firebaseConfig);
