@@ -13,7 +13,7 @@ const routes: RouteRecordRaw[] = [
     meta: {
       layout: Layout.LeftAside,
     },
-    component: () => import('./components/Calendar.vue'),
+    component: () => import('./components/DshCalendar.vue'),
   },
 ];
 
