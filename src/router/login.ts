@@ -2,11 +2,14 @@ import { RouteRecordRaw } from 'vue-router';
 
 import Login from '@/components/Login.vue';
 import { Layout } from '@/layouts/layouts';
-import { RouteName } from '@/router/t';
+
+export enum LoginRouteName {
+  LOGIN = 'login',
+}
 
 const routes: RouteRecordRaw[] = [
   {
-    name: RouteName.LOGIN,
+    name: LoginRouteName.LOGIN,
     path: '/login',
     meta: {
       layout: Layout.NoLayout,

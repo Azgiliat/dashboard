@@ -5,7 +5,3 @@ declare module 'vue-router' {
     layout?: Layout;
   }
 }
-
-export enum RouteName {
-  LOGIN = 'login',
-}
