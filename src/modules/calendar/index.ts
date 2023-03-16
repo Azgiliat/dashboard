@@ -1,4 +1,4 @@
-import { Module } from '@/modules/module-registrator';
+import { Module } from '@/modules/registerModuleInApp';
 
 import routes from './routes';
 
