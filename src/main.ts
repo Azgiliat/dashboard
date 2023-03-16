@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 
 import { AppModule } from '@/dto/modules';
-import { registerModuleInApp } from '@/modules/module-registrator';
+import { registerModuleInApp } from '@/modules/registerModuleInApp';
 import { router } from '@/router';
 import { pinia } from '@/stores';
 
