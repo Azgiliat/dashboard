@@ -5,7 +5,9 @@ import { useModulesStore } from '@/stores/modules';
 export function registerModuleInApp(moduleDescriptor: string): Promise<void>;
 export function registerModuleInApp(moduleDescriptor: AppModule): void;
 
-export async function registerModuleInApp(moduleDescriptor: any) {
+export async function registerModuleInApp(
+  moduleDescriptor: string | AppModule,
+) {
   const modulesStore = useModulesStore();
 
   let module: null | AppModule;
