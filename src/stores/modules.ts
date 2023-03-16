@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-import { Module } from '@/modules/module-registrator';
+import { AppModule } from '@/dto/modules';
 
 export const useModulesStore = defineStore('modules', () => {
-  const registeredModulesList = ref<Module[]>([]);
-  function registerModule(module: Module) {
+  const registeredModulesList = ref<AppModule[]>([]);
+  function registerModule(module: AppModule) {
     registeredModulesList.value.push(module);
   }
 
