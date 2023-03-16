@@ -10,9 +10,11 @@ import App from './App.vue';
 import './styles/style.css';
 
 const app = createApp(App).use(pinia).use(router);
-const modules: Record<string, { default: AppModule }> = import.meta.glob(
+const modules = import.meta.glob<{ default: AppModule }>(
   './modules/**/index.ts',
-  { eager: true },
+  {
+    eager: true,
+  },
 );
 
 for (const module of Object.values(modules)) {
