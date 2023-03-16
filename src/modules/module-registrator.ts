@@ -1,19 +1,11 @@
-import { RouteRecordRaw } from 'vue-router';
-
+import { AppModule } from '@/dto/modules';
 import { router } from '@/router';
 import { useModulesStore } from '@/stores/modules';
-
-export interface Module {
-  name: string;
-  icon: string;
-  displayName?: string;
-  routes: RouteRecordRaw[];
-}
 
 export async function registerModuleInApp(moduleName: string) {
   const modulesStore = useModulesStore();
 
-  let module: null | Module;
+  let module: null | AppModule;
 
   try {
     module = (await import(`./${moduleName}`)).default || null;
