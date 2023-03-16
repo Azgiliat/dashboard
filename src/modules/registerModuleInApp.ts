@@ -12,6 +12,7 @@ export async function registerModuleInApp(moduleDescriptor: any) {
 
   if (typeof moduleDescriptor === 'string') {
     try {
+      // index.ts for vite will be able to make static analyze
       module = (await import(`./${moduleDescriptor}/index.ts`)).default || null;
     } catch {
       module = null;
