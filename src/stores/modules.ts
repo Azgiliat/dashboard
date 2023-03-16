@@ -1,16 +1,21 @@
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
-import { AppModule } from '@/dto/modules';
+import { AppModule, AppModuleName } from '@/dto/modules';
+import { useLoginStore } from '@/stores/login';
 
 export const useModulesStore = defineStore('modules', () => {
-  const registeredModulesList = ref<AppModule[]>([]);
+  const loginStore = useLoginStore();
+  const registeredModulesList = ref<Map<AppModuleName, AppModule>>(new Map([]));
+  const visibleModules = computed(() =>
+    loginStore.userModules.filter(registeredModulesList.value.has),
+  );
   function registerModule(module: AppModule) {
-    registeredModulesList.value.push(module);
+    registeredModulesList.value.set(module.name, module);
   }
 
   return {
     registerModule,
-    registeredModulesList,
+    visibleModules,
   };
 });

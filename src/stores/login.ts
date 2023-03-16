@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
 import { CreateWithEmailCredentials, LoginCredentials } from '@/dto/auth';
+import { AppModuleName } from '@/dto/modules';
 import { getAuthObserver } from '@/firebase/auth';
 import {
   loginRequest,
@@ -12,6 +13,7 @@ import {
 
 export const useLoginStore = defineStore('login', () => {
   const localUser = localStorage.getItem('fb-user');
+  const userModules = ref<AppModuleName[]>([]);
   const user = ref<User | null>(localUser ? JSON.parse(localUser) : null);
   const setUser = (newUser: User | null) => {
     user.value = newUser;
@@ -36,6 +38,7 @@ export const useLoginStore = defineStore('login', () => {
 
   return {
     user,
+    userModules,
     login,
     logout,
     registerNewUserWithEmail,
