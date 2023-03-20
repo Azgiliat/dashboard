@@ -1,19 +1,31 @@
 import { RouteRecordRaw } from 'vue-router';
 
+import { useIsModuleRouteAvailable } from '@/composables/useIsModuleRouteAvailable';
+import { AppModuleName } from '@/dto/modules';
 import { Layout } from '@/layouts/layouts';
 
-export enum CalendarRouteName {
-  CALENDAR = 'calendar',
-}
+export const CALENDAR_ROUTE_NAMES = {
+  ROOT: 'calendar',
+} as const;
 
 const routes: RouteRecordRaw[] = [
   {
-    name: CalendarRouteName.CALENDAR,
+    name: CALENDAR_ROUTE_NAMES.ROOT,
     path: '/calendar',
     meta: {
       layout: Layout.LeftAside,
+      moduleName: AppModuleName.CALENDAR,
     },
     component: () => import('./components/DshCalendar.vue'),
+    beforeEnter() {
+      return useIsModuleRouteAvailable(AppModuleName.CALENDAR);
+    },
+    children: [
+      {
+        path: 'asd',
+        component: () => import('./components/DshCalendarChild.vue'),
+      },
+    ],
   },
 ];
 

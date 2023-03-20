@@ -40,9 +40,10 @@ export function baseRequest<T = any>(requester: any) {
   if (isFirebaseRequest(requester)) {
     executor = requester;
   } else {
-    executor = <T>fetch(requester.url, {
-      method: requester.method,
-    }).then((res) => res.json());
+    // TODO extract custom request to separated function so this func will always accept promise and wrap it to handle errors
+    executor = () => <T>fetch(requester.url, {
+        method: requester.method,
+      }).then((res) => res.json());
   }
 
   return executor().catch((err: Error) => {

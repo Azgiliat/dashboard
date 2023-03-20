@@ -10,6 +10,7 @@ import {
   logoutRequest,
   registerWithEmailRequest,
 } from '@/http/login';
+import { loadUserModules } from '@/http/modules';
 
 export const useLoginStore = defineStore('login', () => {
   const localUser = localStorage.getItem('fb-user');
@@ -33,6 +34,15 @@ export const useLoginStore = defineStore('login', () => {
   function registerNewUserWithEmail(credentials: CreateWithEmailCredentials) {
     return registerWithEmailRequest(credentials);
   }
+  async function fetchUserModules() {
+    if (!user.value) {
+      return;
+    }
+
+    try {
+      userModules.value = await loadUserModules(user.value.uid);
+    } catch {}
+  }
 
   getAuthObserver(setUser);
 
@@ -42,5 +52,6 @@ export const useLoginStore = defineStore('login', () => {
     login,
     logout,
     registerNewUserWithEmail,
+    fetchUserModules,
   };
 });

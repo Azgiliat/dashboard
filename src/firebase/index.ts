@@ -11,4 +11,6 @@ const firebaseConfig = {
     'https://my-little-jira-default-rtdb.europe-west1.firebasedatabase.app',
 };
 
-export const firebaseApp = initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
+
+export { firebaseApp };
