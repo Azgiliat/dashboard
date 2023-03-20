@@ -24,10 +24,6 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'asd',
         component: () => import('./components/DshCalendarChild.vue'),
-        beforeEnter(to) {
-          console.log('beforeEnter child');
-          return true;
-        },
       },
     ],
   },

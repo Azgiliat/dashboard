@@ -61,8 +61,6 @@ export async function registerModuleInApp(
     return;
   }
 
-  console.log(module);
-
   modulesStore.registerModule(module.storeModule);
   module.routes.forEach((route) => {
     router.addRoute(route);
