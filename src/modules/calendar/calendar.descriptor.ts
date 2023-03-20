@@ -7,7 +7,7 @@ const calendarModule: AppModule = {
   storeModule: {
     name: AppModuleName.CALENDAR,
     rootRoute: CALENDAR_ROUTE_NAMES.ROOT,
-    icon: 'Calendar',
+    icon: 'calendar',
   },
 };
 
