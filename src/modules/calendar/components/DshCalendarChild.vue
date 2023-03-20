@@ -1,3 +1,3 @@
 <template>
-  <p>calendar child</p>
+  <router-link to="/">calendar child</router-link>
 </template>

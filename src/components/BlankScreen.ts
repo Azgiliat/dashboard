@@ -1,7 +1,13 @@
 import { FunctionalComponent, h } from 'vue';
 
 const BlankScreen: FunctionalComponent = () => {
-  return h('div', {}, h('p', 'Welcome to the Dashboard App'));
+  return h(
+    'div',
+    {
+      class: 'p-8 w-full flex justify-center items-center',
+    },
+    h('p', 'Welcome to the Dashboard App'),
+  );
 };
 
 BlankScreen.displayName = 'BlankScreen';
