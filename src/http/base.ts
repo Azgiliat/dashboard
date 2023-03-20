@@ -40,9 +40,9 @@ export function baseRequest<T = any>(requester: any) {
   if (isFirebaseRequest(requester)) {
     executor = requester;
   } else {
-    executor = <T>fetch(requester.url, {
-      method: requester.method,
-    }).then((res) => res.json());
+    executor = () => <T>fetch(requester.url, {
+        method: requester.method,
+      }).then((res) => res.json());
   }
 
   return executor().catch((err: Error) => {
