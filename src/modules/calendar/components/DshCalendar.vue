@@ -1,3 +1,4 @@
 <template>
-  <p>calendar</p>
+  <router-link :to="'/calendar/asd'">calendar</router-link>
+  <router-view />
 </template>

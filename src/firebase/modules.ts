@@ -1,5 +1,6 @@
+import { AppModuleName } from '@/dto/modules';
 import { getFromDb } from '@/firebase/db';
 
 export function getUserModules(userUid: string) {
-  return getFromDb<string[]>(`modules/${userUid}`);
+  return getFromDb<AppModuleName[]>(`userModules/${userUid}`);
 }

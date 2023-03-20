@@ -5,9 +5,14 @@ export enum AppModuleName {
   CONTACTS = 'contacts',
 }
 
-export interface AppModule {
+export interface StoreAppModule {
   name: AppModuleName;
   icon: string;
+  rootRoute: string;
   displayName?: string;
+}
+
+export interface AppModule {
   routes: RouteRecordRaw[];
+  storeModule: StoreAppModule;
 }

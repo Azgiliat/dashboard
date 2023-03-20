@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import AppLoading from '@/components/AppLoading.vue';
+import BlankScreen from '@/components/BlankScreen';
 import { Layout } from '@/layouts/layouts';
 import { useLoginStore } from '@/stores/login';
 
@@ -11,10 +11,10 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: AppLoading,
       meta: {
-        layout: Layout.NoLayout,
+        layout: Layout.LeftAside,
       },
+      component: BlankScreen,
     },
     ...loginRoutes,
     {
