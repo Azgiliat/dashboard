@@ -9,6 +9,6 @@ import './styles/style.css';
 // eslint-disable-next-line import/no-unresolved
 import 'virtual:svg-icons-register';
 
-const app = createApp(App).use(pinia);
+const app = createApp(App).use(pinia).use(router);
 
-app.use(router).mount('#app');
+app.mount('#app');

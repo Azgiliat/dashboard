@@ -3,6 +3,7 @@ import { RouteRecordRaw } from 'vue-router';
 export enum AppModuleName {
   CALENDAR = 'calendar',
   CONTACTS = 'contacts',
+  PROFILE = 'profile',
 }
 
 export interface StoreAppModule {
@@ -10,6 +11,7 @@ export interface StoreAppModule {
   icon: string;
   rootRoute: string;
   displayName?: string;
+  isCore?: boolean;
 }
 
 export interface AppModule {

@@ -11,48 +11,35 @@ function checkModuleAvailability(moduleName: AppModuleName) {
   }
 }
 
-function isDescriptorJustName(
-  moduleName: AppModuleName | AppModule,
-): moduleName is AppModuleName {
-  return (
-    typeof moduleName === 'string' &&
-    Object.values(AppModuleName).includes(moduleName)
+export function registerModuleInApp(moduleDescriptor: AppModule) {
+  const isModuleAvailable = checkModuleAvailability(
+    moduleDescriptor.storeModule.name,
   );
-}
-
-export async function registerModuleInApp(
-  moduleDescriptor: AppModuleName | AppModule,
-) {
-  const modulesStore = useModulesStore();
-  let module: null | AppModule;
-  const isDescriptorFull = !isDescriptorJustName(moduleDescriptor);
-  const moduleName = isDescriptorFull
-    ? moduleDescriptor.storeModule.name
-    : moduleDescriptor;
-  const isModuleAvailable = checkModuleAvailability(moduleName);
-
   if (!isModuleAvailable) {
     if (import.meta.env.MODE === 'development') {
       // eslint-disable-next-line no-console
-      console.warn(`Module ${moduleName} is disabled`);
+      console.warn(`Module ${moduleDescriptor.storeModule.name} is disabled`);
     }
     return;
   }
 
-  if (isDescriptorFull) {
-    module = moduleDescriptor;
-  } else {
-    try {
-      // calendar.descriptor.ts for vite will be able to make static analyze
-      module =
-        (
-          await import(
-            `./${moduleDescriptor}/${moduleDescriptor}.descriptor.ts`
-          )
-        ).default || null;
-    } catch {
-      module = null;
-    }
+  const modulesStore = useModulesStore();
+  modulesStore.registerModule(moduleDescriptor.storeModule);
+  moduleDescriptor.routes.forEach((route) => {
+    router.addRoute(route);
+  });
+}
+
+export async function registerAsyncModuleInApp(moduleName: AppModuleName) {
+  let module: null | AppModule;
+
+  try {
+    // calendar.descriptor.ts for vite will be able to make static analyze
+    module =
+      (await import(`./${moduleName}/${moduleName}.descriptor.ts`)).default ||
+      null;
+  } catch {
+    module = null;
   }
 
   if (!module) {
@@ -61,8 +48,5 @@ export async function registerModuleInApp(
     return;
   }
 
-  modulesStore.registerModule(module.storeModule);
-  module.routes.forEach((route) => {
-    router.addRoute(route);
-  });
+  registerModuleInApp(module);
 }
