@@ -3,6 +3,7 @@ import { RouteRecordRaw } from 'vue-router';
 export enum AppModuleName {
   CALENDAR = 'calendar',
   CONTACTS = 'contacts',
+  PAINT = 'paint',
 }
 
 export interface StoreAppModule {
