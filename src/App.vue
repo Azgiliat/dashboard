@@ -11,7 +11,8 @@ import { useRoute, useRouter } from 'vue-router';
 
 import AppLoading from '@/components/AppLoading.vue';
 import ComputedLayout from '@/layouts/ComputedLayout.vue';
-import { registerModuleInApp } from '@/modules/registerModuleInApp';
+import { registerCoreModules } from '@/modules/registerCoreModules';
+import { registerAsyncModuleInApp } from '@/modules/registerModuleInApp';
 import { useLoginStore } from '@/stores/login';
 import { useModulesStore } from '@/stores/modules';
 
@@ -23,8 +24,9 @@ const route = useRoute();
 const appInitiated = ref(false);
 
 async function initApp() {
+  registerCoreModules();
   await loginStore.fetchUserModules();
-  await Promise.all(loginStore.userModules.map(registerModuleInApp));
+  await Promise.all(loginStore.userModules.map(registerAsyncModuleInApp));
 
   setTimeout(() => {
     if (route.fullPath !== '' && modulesStore.firstAvailableModule) {
