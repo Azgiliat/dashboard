@@ -6,7 +6,7 @@ export default {
   routes,
   storeModule: {
     name: AppModuleName.PROFILE,
-    icon: 'profile',
+    icon: 'calendar',
     rootRoute: PROFILE_ROUTE_NAME.ROOT,
     isCore: true,
   },
