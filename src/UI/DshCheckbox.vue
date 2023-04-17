@@ -100,6 +100,7 @@ const boxBindings = computed(() => {
   0% {
     stroke-dashoffset: 15.239;
   }
+
   100% {
     stroke-dashoffset: 0;
   }
