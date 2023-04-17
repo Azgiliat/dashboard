@@ -15,9 +15,11 @@ export default defineConfig({
         plugins: [
           'preset-default',
           {
-            name: 'removeAttrs',
+            name: 'removeAttributesBySelector',
+            // @ts-expect-error broken type in svgo, they don't pass any params as generic for removeAttributesBySelector plugin
             params: {
-              attrs: 'fill',
+              selector: ':is(svg, path, g):not(.fill-required)',
+              attributes: 'fill',
             },
           },
         ],
