@@ -1,12 +1,9 @@
 <template>
   <aside class="w-1/4 bg-white px-12 py-8">
-    <p class="text-base text-gray2 font-bold mb-6">MAIN MENU</p>
+    <p class="mb-6 text-base font-bold text-gray2">MAIN MENU</p>
     <ul>
       <li v-for="module of modulesStore.visibleModules" :key="module.name">
-        <aside-menu-item
-          :icon="module.icon"
-          :title="module.displayName ?? module.name"
-        />
+        <aside-menu-item :module="module" />
       </li>
     </ul>
   </aside>

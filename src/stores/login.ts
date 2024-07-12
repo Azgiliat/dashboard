@@ -5,12 +5,12 @@ import { ref } from 'vue';
 import { CreateWithEmailCredentials, LoginCredentials } from '@/dto/auth';
 import { AppModuleName } from '@/dto/modules';
 import { getAuthObserver } from '@/firebase/auth';
+import { loadUserModules } from '@/http/externalUserInfo';
 import {
   loginRequest,
   logoutRequest,
   registerWithEmailRequest,
 } from '@/http/login';
-import { loadUserModules } from '@/http/modules';
 
 export const useLoginStore = defineStore('login', () => {
   const localUser = localStorage.getItem('fb-user');

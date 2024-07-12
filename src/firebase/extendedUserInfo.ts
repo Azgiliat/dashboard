@@ -1,4 +1,5 @@
 import { ExtendedUserInfo } from '@/dto/extendedUserInfo';
+import { AppModuleName } from '@/dto/modules';
 import { getFromDb } from '@/firebase/db';
 
 const baseUrl = 'extendedUserInfo';
@@ -15,4 +16,8 @@ export function getUserCompany(uid: string) {
 
 export function getUserContacts(uid: string) {
   return getFromDb<ExtendedUserInfo>(`${baseUrl}/${uid}/contacts`);
+}
+
+export function getUserModules(uid: string) {
+  return getFromDb<AppModuleName[]>(`${baseUrl}/${uid}/plugins`);
 }

@@ -1,5 +1,5 @@
 <template>
-  <section class="min-h-screen flex-col flex">
+  <section class="flex min-h-screen flex-col">
     <app-loading v-if="!appInitiated" />
     <computed-layout v-else />
   </section>
@@ -26,6 +26,7 @@ const appInitiated = ref(false);
 async function initApp() {
   registerCoreModules();
   await loginStore.fetchUserModules();
+  await modulesStore.loadAppModules();
   await Promise.all(loginStore.userModules.map(registerAsyncModuleInApp));
 
   setTimeout(() => {

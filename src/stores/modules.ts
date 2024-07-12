@@ -2,10 +2,12 @@ import { defineStore } from 'pinia';
 import { computed, reactive } from 'vue';
 
 import { AppModuleName, StoreAppModule } from '@/dto/modules';
+import { loadAllAvailableAppModules } from '@/http/plugins';
 import { useLoginStore } from '@/stores/login';
 
 export const useModulesStore = defineStore('modules', () => {
   const loginStore = useLoginStore();
+  const allAvailableAppModules = reactive<AppModuleName[]>([]);
   const coreModulesList = reactive<Map<AppModuleName, StoreAppModule>>(
     new Map([]),
   );
@@ -33,11 +35,18 @@ export const useModulesStore = defineStore('modules', () => {
     }
     registeredModulesList.set(module.name, module);
   }
+  async function loadAppModules() {
+    try {
+      allAvailableAppModules.push(...(await loadAllAvailableAppModules()));
+    } catch {}
+  }
 
   return {
     registerModule,
     visibleModules,
     firstAvailableModule,
     registeredModulesList,
+    loadAppModules,
+    allAvailableAppModules,
   };
 });

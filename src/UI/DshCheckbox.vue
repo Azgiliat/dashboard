@@ -4,11 +4,11 @@
       :id="id"
       v-model="value"
       type="checkbox"
-      class="hidden peer"
+      class="peer hidden"
       :disabled="disabled"
     />
     <div
-      class="mr-2 aspect-square w-[24px] h-[24px] border-2 rounded transition duration-300 peer-disabled:cursor-not-allowed"
+      class="mr-2 aspect-square h-[24px] w-[24px] rounded border-2 transition duration-300 peer-disabled:cursor-not-allowed"
       :class="boxBindings.boxClasses"
       @click="boxBindings.onClick"
     >
@@ -18,13 +18,13 @@
           width="20"
           height="20"
           name="check"
-          class="stroke-current check-icon text-white"
+          class="check-icon stroke-current text-white"
         />
       </transition>
     </div>
     <label class="block" :for="id">
       <slot>
-        <span class="font-bold text-lg">
+        <span class="text-lg font-bold">
           {{ text }}
         </span>
       </slot>

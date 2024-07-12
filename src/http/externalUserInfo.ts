@@ -2,6 +2,7 @@ import {
   getExternalUserInfo,
   getUserCompany,
   getUserContacts,
+  getUserModules,
 } from '@/firebase/extendedUserInfo';
 import { baseRequest } from '@/http/base';
 
@@ -12,6 +13,11 @@ export function loadExternalUserInfo(uid: string) {
 export function loadUserCompany(uid: string) {
   return baseRequest(() => getUserCompany(uid));
 }
+
 export function loadUserContacts(uid: string) {
   return baseRequest(() => getUserContacts(uid));
+}
+
+export function loadUserModules(uid: string) {
+  return baseRequest(() => getUserModules(uid));
 }

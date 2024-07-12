@@ -1,18 +1,18 @@
 <template>
   <div>
-    <label v-if="label" :for="id" class="block mb-3.5">
+    <label v-if="label" :for="id" class="mb-3.5 block">
       <span
-        class="font-bold font-secondary text-gray2 text-base tracking-wider"
+        class="font-secondary text-base font-bold tracking-wider text-gray2"
       >
         {{ label }}
       </span>
     </label>
-    <div class="border-gray2 border-2 rounded-xl py-2 px-4">
+    <div class="rounded-xl border-2 border-gray2 px-4 py-2">
       <input
         :id="id"
         v-model="innerValue"
         :type="type"
-        class="appearance-none outline-none w-full"
+        class="w-full appearance-none outline-none"
       />
     </div>
   </div>

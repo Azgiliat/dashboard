@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-gray3 flex-grow flex">
+  <section class="flex flex-grow bg-gray3">
     <aside-menu />
     <router-view />
   </section>
