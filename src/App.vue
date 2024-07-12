@@ -6,15 +6,14 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-
 import AppLoading from '@/components/AppLoading.vue';
 import ComputedLayout from '@/layouts/ComputedLayout.vue';
 import { registerCoreModules } from '@/modules/registerCoreModules';
 import { registerAsyncModuleInApp } from '@/modules/registerModuleInApp';
 import { useLoginStore } from '@/stores/login';
 import { useModulesStore } from '@/stores/modules';
+import { onMounted, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 const loginStore = useLoginStore();
 const modulesStore = useModulesStore();

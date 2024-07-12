@@ -1,13 +1,12 @@
+import { CreateWithEmailCredentials, LoginCredentials } from '@/dto/auth';
+import { firebaseApp } from '@/firebase/index';
 import {
+  createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
-  createUserWithEmailAndPassword,
 } from 'firebase/auth';
-
-import { CreateWithEmailCredentials, LoginCredentials } from '@/dto/auth';
-import { firebaseApp } from '@/firebase/index';
 
 const auth = getAuth(firebaseApp);
 

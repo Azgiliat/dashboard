@@ -1,6 +1,5 @@
-import { AppModule, AppModuleName } from '@/dto/modules';
-
 import { PROFILE_ROUTE_NAME, routes } from './routes';
+import { AppModule, AppModuleName } from '@/dto/modules';
 
 export default {
   routes,

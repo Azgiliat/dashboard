@@ -1,6 +1,5 @@
-import { AppModule, AppModuleName } from '@/dto/modules';
-
 import routes, { CALENDAR_ROUTE_NAMES } from './routes';
+import { AppModule, AppModuleName } from '@/dto/modules';
 
 const calendarModule: AppModule = {
   routes,

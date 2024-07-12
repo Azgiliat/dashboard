@@ -1,10 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router';
-
+import loginRoutes, { LoginRouteName } from './login';
 import BlankScreen from '@/components/BlankScreen';
 import { Layout } from '@/layouts/layouts';
 import { useLoginStore } from '@/stores/login';
-
-import loginRoutes, { LoginRouteName } from './login';
+import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
   history: createWebHistory(),

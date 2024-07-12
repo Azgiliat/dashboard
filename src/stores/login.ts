@@ -1,8 +1,8 @@
-import { User } from 'firebase/auth';
+import type { User } from 'firebase/auth';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-import { CreateWithEmailCredentials, LoginCredentials } from '@/dto/auth';
+import type { CreateWithEmailCredentials, LoginCredentials } from '@/dto/auth';
 import { AppModuleName } from '@/dto/modules';
 import { getAuthObserver } from '@/firebase/auth';
 import { loadUserModules } from '@/http/externalUserInfo';

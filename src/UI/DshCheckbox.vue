@@ -33,10 +33,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-
 import DshIcon from '@/UI/DshIcon';
 import { getUid } from '@/UI/id';
+import { computed } from 'vue';
 
 const id = getUid();
 const props = withDefaults(

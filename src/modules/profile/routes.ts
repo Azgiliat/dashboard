@@ -1,6 +1,5 @@
-import { RouteRecordRaw } from 'vue-router';
-
 import { Layout } from '@/layouts/layouts';
+import { RouteRecordRaw } from 'vue-router';
 
 export const PROFILE_ROUTE_NAME = {
   ROOT: 'profile',

@@ -1,6 +1,5 @@
-import { getDatabase, ref, get, child } from 'firebase/database';
-
 import { firebaseApp } from '@/firebase/index';
+import { child, get, getDatabase, ref } from 'firebase/database';
 
 const dbRef = ref(getDatabase(firebaseApp));
 function getFromDb<T = never>(url: string): Promise<T> {

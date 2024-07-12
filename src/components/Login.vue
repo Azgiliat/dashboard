@@ -22,12 +22,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-
 import DshButton from '@/UI/DshButton';
 import DshInput from '@/UI/DshInput.vue';
 import { UITypes } from '@/UI/UITypes';
 import { useLoginStore } from '@/stores/login';
+import { ref } from 'vue';
 
 const userStore = useLoginStore();
 

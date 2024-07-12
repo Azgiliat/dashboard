@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import DshIcon from '@/UI/DshIcon';
 import { useModuleDisplayName } from '@/composables/useModuleDisplayName';
-import { StoreAppModule } from '@/dto/modules';
+import type { StoreAppModule } from '@/dto/modules';
 
 const props = defineProps<{
   module: StoreAppModule;
