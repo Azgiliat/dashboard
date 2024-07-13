@@ -1,4 +1,4 @@
-import type { AppModule} from '@/dto/modules';
+import type { AppModule } from '@/dto/modules';
 import { AppModuleName } from '@/dto/modules';
 import { router } from '@/router';
 import { useModulesStore } from '@/stores/modules';

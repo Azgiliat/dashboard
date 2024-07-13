@@ -1,4 +1,4 @@
-import type { FunctionalComponent} from 'vue';
+import type { FunctionalComponent } from 'vue';
 import { h } from 'vue';
 
 interface DshIconProps {

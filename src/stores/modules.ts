@@ -1,8 +1,9 @@
+import { defineStore } from 'pinia';
+import { computed, reactive } from 'vue';
+
 import type { AppModuleName, StoreAppModule } from '@/dto/modules';
 import { loadAllAvailableAppModules } from '@/http/plugins';
 import { useLoginStore } from '@/stores/login';
-import { defineStore } from 'pinia';
-import { computed, reactive } from 'vue';
 
 export const useModulesStore = defineStore('modules', () => {
   const loginStore = useLoginStore();

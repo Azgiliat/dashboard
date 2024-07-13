@@ -35,13 +35,14 @@ export function baseRequest<T extends FirebaseRequest>(
   requester: T,
 ): ReturnType<T>;
 export function baseRequest<T = any>(requestParams: RequestParams): Promise<T>;
-export function baseRequest<T = any>(requester: any) {
+export function baseRequest(requester: any) {
   let executor: null | typeof requester = null;
   if (isFirebaseRequest(requester)) {
     executor = requester;
   } else {
     // TODO extract custom request to separated function so this func will always accept promise and wrap it to handle errors
-    executor = () => <T>fetch(requester.url, {
+    executor = () =>
+      fetch(requester.url, {
         method: requester.method,
       }).then((res) => res.json());
   }

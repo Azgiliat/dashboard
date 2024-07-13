@@ -1,7 +1,8 @@
+import type { RouteRecordRaw } from 'vue-router';
+
 import { useIsModuleRouteAvailable } from '@/composables/useIsModuleRouteAvailable';
 import { AppModuleName } from '@/dto/modules';
 import { Layout } from '@/layouts/layouts';
-import type { RouteRecordRaw } from 'vue-router';
 
 export const CALENDAR_ROUTE_NAMES = {
   ROOT: 'calendar',

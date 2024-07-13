@@ -12,11 +12,10 @@
 
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
+import { reactive } from 'vue';
 
 import DshCheckbox from '@/UI/DshCheckbox.vue';
 import { useModulesStore } from '@/stores/modules';
-
-import { reactive } from 'vue';
 
 const { allAvailableAppModules, registeredModulesList, visibleModules } =
   storeToRefs(useModulesStore());

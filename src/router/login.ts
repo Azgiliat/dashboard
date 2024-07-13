@@ -1,6 +1,7 @@
+import type { RouteRecordRaw } from 'vue-router';
+
 import Login from '@/components/Login.vue';
 import { Layout } from '@/layouts/layouts';
-import type { RouteRecordRaw } from 'vue-router';
 
 export enum LoginRouteName {
   LOGIN = 'login',

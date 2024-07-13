@@ -19,8 +19,9 @@
 </template>
 
 <script setup lang="ts">
-import { getUid } from '@/UI/id';
 import { computed } from 'vue';
+
+import { getUid } from '@/UI/id';
 
 const props = withDefaults(
   defineProps<{
