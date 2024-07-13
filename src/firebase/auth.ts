@@ -1,5 +1,3 @@
-import { CreateWithEmailCredentials, LoginCredentials } from '@/dto/auth';
-import { firebaseApp } from '@/firebase/index';
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -7,6 +5,9 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
+
+import type { CreateWithEmailCredentials, LoginCredentials } from '@/dto/auth';
+import { firebaseApp } from '@/firebase/index';
 
 const auth = getAuth(firebaseApp);
 

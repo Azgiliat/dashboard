@@ -1,4 +1,4 @@
-import { AppModuleName } from '@/dto/modules';
+import type { AppModuleName } from '@/dto/modules';
 import { getFromDb } from '@/firebase/db';
 
 export function getAppPlugins() {

@@ -1,4 +1,4 @@
-import { StoreAppModule } from '@/dto/modules';
+import type { StoreAppModule } from '@/dto/modules';
 import { computed } from 'vue';
 
 export function useModuleDisplayName(module: StoreAppModule) {

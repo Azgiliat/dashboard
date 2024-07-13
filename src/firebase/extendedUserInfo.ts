@@ -1,5 +1,5 @@
-import { ExtendedUserInfo } from '@/dto/extendedUserInfo';
-import { AppModuleName } from '@/dto/modules';
+import type { ExtendedUserInfo } from '@/dto/extendedUserInfo';
+import type { AppModuleName } from '@/dto/modules';
 import { getFromDb } from '@/firebase/db';
 
 const baseUrl = 'extendedUserInfo';

@@ -1,4 +1,4 @@
-import { AppModuleName, StoreAppModule } from '@/dto/modules';
+import type { AppModuleName, StoreAppModule } from '@/dto/modules';
 import { loadAllAvailableAppModules } from '@/http/plugins';
 import { useLoginStore } from '@/stores/login';
 import { defineStore } from 'pinia';

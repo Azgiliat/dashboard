@@ -1,5 +1,5 @@
-import { AppModuleName } from '@/dto/modules';
-import { Layout } from '@/layouts/layouts';
+import type { AppModuleName } from '@/dto/modules';
+import type { Layout } from '@/layouts/layouts';
 
 declare module 'vue-router' {
   interface RouteMeta {
