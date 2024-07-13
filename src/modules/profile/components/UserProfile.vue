@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { reactive } from 'vue';
+import { onMounted, reactive } from 'vue';
 
 import DshCheckbox from '@/UI/DshCheckbox.vue';
 import { useModulesStore } from '@/stores/modules';
@@ -26,4 +26,8 @@ const selectedState = reactive(
     disabled: !registeredModulesList.value.has(moduleName),
   })),
 );
+
+onMounted(() => {
+  useModulesStore().loadAppModules();
+});
 </script>
