@@ -4,8 +4,8 @@ import type { FunctionalComponent, PropType } from 'vue';
 import { UITypes } from '@/UI/UITypes';
 
 type Props = {
-  type: UITypes;
-  text: string;
+  type?: UITypes;
+  text?: string;
 };
 
 const DshButton: FunctionalComponent<Props> = function (props, ctx) {

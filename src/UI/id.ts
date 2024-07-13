@@ -1,5 +1,7 @@
-let id = 0;
+import { nanoid } from 'nanoid';
+
+const id = 0;
 
 export function getUid() {
-  return ++id;
+  return nanoid();
 }
