@@ -3,12 +3,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
-
 import LeftAside from './LeftAside.vue';
 import NoLayout from './NoLayout.vue';
 import { Layout } from './layouts';
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 
 const route = useRoute();
 

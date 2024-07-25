@@ -1,4 +1,4 @@
-import { RouteRecordRaw } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
 
 export enum AppModuleName {
   CALENDAR = 'calendar',
@@ -6,15 +6,24 @@ export enum AppModuleName {
   PROFILE = 'profile',
 }
 
-export interface StoreAppModule {
-  name: AppModuleName;
-  icon: string;
+export type FrontModuleDescription = {
   rootRoute: string;
-  displayName?: string;
-  isCore?: boolean;
-}
+  routes: RouteRecordRaw[];
+};
 
-export interface AppModule {
+export type StoreAppModule = BackendModuleDescription & {
+  rootRoute: string;
+};
+
+export type AppModule = {
   routes: RouteRecordRaw[];
   storeModule: StoreAppModule;
-}
+};
+
+export type BackendModuleDescription = {
+  isCore: boolean;
+  name: AppModuleName;
+  icon: string;
+};
+
+export type AppModulesList = { modules: Array<BackendModuleDescription> };

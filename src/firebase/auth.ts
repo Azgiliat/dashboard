@@ -1,15 +1,15 @@
 import {
+  createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
-  createUserWithEmailAndPassword,
 } from 'firebase/auth';
 
-import { CreateWithEmailCredentials, LoginCredentials } from '@/dto/auth';
+import type { CreateWithEmailCredentials, LoginCredentials } from '@/dto/auth';
 import { firebaseApp } from '@/firebase/index';
 
-const auth = getAuth(firebaseApp);
+export const auth = getAuth(firebaseApp);
 
 export const getAuthObserver = (
   processUserCb: Parameters<typeof onAuthStateChanged>[1],

@@ -1,4 +1,4 @@
-import { AppModuleName } from '@/dto/modules';
+import type { AppModuleName } from '@/dto/modules';
 import { useModulesStore } from '@/stores/modules';
 
 export function useIsModuleRouteAvailable(moduleName: AppModuleName) {

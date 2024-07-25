@@ -1,15 +1,14 @@
 import { h } from 'vue';
+import type { FunctionalComponent, PropType } from 'vue';
 
 import { UITypes } from '@/UI/UITypes';
 
-import type { FunctionalComponent, PropType } from 'vue';
-
 type Props = {
-  type: UITypes;
-  text: string;
+  type?: UITypes;
+  text?: string;
 };
 
-const DshButton = <FunctionalComponent<Props>>function (props, ctx) {
+const DshButton: FunctionalComponent<Props> = function (props, ctx) {
   return h(
     'button',
     {

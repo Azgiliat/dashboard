@@ -1,4 +1,4 @@
-import { CreateWithEmailCredentials, LoginCredentials } from '@/dto/auth';
+import type { CreateWithEmailCredentials, LoginCredentials } from '@/dto/auth';
 import { login, logout, registerNewUserWithEmail } from '@/firebase/auth';
 import { baseRequest } from '@/http/base';
 

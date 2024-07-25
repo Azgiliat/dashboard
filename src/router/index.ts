@@ -1,10 +1,9 @@
+import loginRoutes, { LoginRouteName } from './login';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import BlankScreen from '@/components/BlankScreen';
 import { Layout } from '@/layouts/layouts';
 import { useLoginStore } from '@/stores/login';
-
-import loginRoutes, { LoginRouteName } from './login';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -24,8 +23,12 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach((to) => {
+router.beforeResolve(async (to) => {
   const userStore = useLoginStore();
+
+  if (!userStore.initialAuthCheckFinished) {
+    await userStore.checkInitAuth();
+  }
 
   if (to.name !== LoginRouteName.LOGIN && !userStore.user) {
     return {

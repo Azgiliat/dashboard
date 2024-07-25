@@ -1,14 +1,13 @@
 import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyA6Mz1O60OZWDf_iA5NgB9np_0FbHLBd1I',
-  authDomain: 'my-little-jira.firebaseapp.com',
-  projectId: 'my-little-jira',
-  storageBucket: 'my-little-jira.appspot.com',
-  messagingSenderId: '319920519366',
-  appId: '1:319920519366:web:f9ac957e38f54d6a0cffc7',
-  databaseURL:
-    'https://my-little-jira-default-rtdb.europe-west1.firebasedatabase.app',
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  databaseURL: import.meta.env.VITE_DATABASE_URL,
 };
 
 const firebaseApp = initializeApp(firebaseConfig);

@@ -40,5 +40,6 @@ lerna-debug.log*
 
 # Configs
 .env.*.local
+.env
 
 .helm/charts

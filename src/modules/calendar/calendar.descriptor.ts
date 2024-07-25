@@ -1,14 +1,10 @@
-import { AppModule, AppModuleName } from '@/dto/modules';
-
 import routes, { CALENDAR_ROUTE_NAMES } from './routes';
 
-const calendarModule: AppModule = {
+import type { FrontModuleDescription } from '@/dto/modules';
+
+const calendarModule: FrontModuleDescription = {
   routes,
-  storeModule: {
-    name: AppModuleName.CALENDAR,
-    rootRoute: CALENDAR_ROUTE_NAMES.ROOT,
-    icon: 'calendar',
-  },
+  rootRoute: CALENDAR_ROUTE_NAMES.ROOT,
 };
 
 export default calendarModule;
