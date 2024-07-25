@@ -11,7 +11,6 @@ import { useRouter } from 'vue-router';
 
 import AppLoading from '@/components/AppLoading.vue';
 import ComputedLayout from '@/layouts/ComputedLayout.vue';
-import { useExtendedUserStore } from '@/stores/extendedUser';
 import { useLoginStore } from '@/stores/login';
 import { useModulesStore } from '@/stores/modules';
 
@@ -19,8 +18,6 @@ const router = useRouter();
 
 const modulesStore = useModulesStore();
 const loginStore = useLoginStore();
-const exte = useExtendedUserStore();
-console.log(exte.extendedUser);
 
 const appInitiated = ref(false);
 const appReady = computed(

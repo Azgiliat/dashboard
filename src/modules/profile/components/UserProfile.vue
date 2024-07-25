@@ -4,7 +4,6 @@
       <dsh-checkbox
         v-model="selectedState[index].selected"
         :text="module.moduleName"
-        :disabled="selectedState[index].disabled"
       />
     </li>
   </ul>
@@ -17,13 +16,14 @@ import { reactive } from 'vue';
 import DshCheckbox from '@/UI/DshCheckbox.vue';
 import { useModulesStore } from '@/stores/modules';
 
-const { allAvailableAppModules, registeredModulesList, visibleModules } =
+const { allAvailableAppModules, visibleModules } =
   storeToRefs(useModulesStore());
 const selectedState = reactive(
-  allAvailableAppModules.value.map((moduleName) => ({
-    moduleName,
-    selected: visibleModules.value.some((module) => module.name === moduleName),
-    disabled: !registeredModulesList.value.has(moduleName),
-  })),
+  allAvailableAppModules.value
+    ? allAvailableAppModules.value.modules.map(({ name }) => ({
+        moduleName: name,
+        selected: visibleModules.value.some((module) => module.name === name),
+      }))
+    : [],
 );
 </script>

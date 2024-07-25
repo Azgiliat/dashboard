@@ -41,9 +41,10 @@ export function baseRequest<T = any>(requester: any) {
     executor = requester;
   } else {
     // TODO extract custom request to separated function so this func will always accept promise and wrap it to handle errors
-    executor = () => <T>fetch(requester.url, {
+    executor = () =>
+      fetch(requester.url, {
         method: requester.method,
-      }).then((res) => res.json());
+      }).then((res) => res.json() as T);
   }
 
   return executor().catch((err: Error) => {
