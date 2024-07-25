@@ -1,42 +1,41 @@
 <template>
   <section class="flex min-h-screen flex-col">
-    <app-loading v-if="!appInitiated" />
+    <app-loading v-if="!appReady" />
     <computed-layout v-else />
   </section>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { computed, onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 import AppLoading from '@/components/AppLoading.vue';
 import ComputedLayout from '@/layouts/ComputedLayout.vue';
-import { registerCoreModules } from '@/modules/registerCoreModules';
-import { registerAsyncModuleInApp } from '@/modules/registerModuleInApp';
+import { useExtendedUserStore } from '@/stores/extendedUser';
 import { useLoginStore } from '@/stores/login';
 import { useModulesStore } from '@/stores/modules';
 
-const loginStore = useLoginStore();
-const modulesStore = useModulesStore();
 const router = useRouter();
-const route = useRoute();
+
+const modulesStore = useModulesStore();
+const loginStore = useLoginStore();
+const exte = useExtendedUserStore();
+console.log(exte.extendedUser);
 
 const appInitiated = ref(false);
+const appReady = computed(
+  () =>
+    appInitiated.value &&
+    !modulesStore.isInitialLoading &&
+    loginStore.initialAuthCheckFinished,
+);
 
 async function initApp() {
-  registerCoreModules();
-  await loginStore.fetchUserModules();
-  await modulesStore.loadAppModules();
-  await Promise.all(loginStore.userModules.map(registerAsyncModuleInApp));
+  await router.isReady();
+  await loginStore.checkInitAuth();
+  await modulesStore.initModules();
 
-  setTimeout(() => {
-    if (route.fullPath !== '' && modulesStore.firstAvailableModule) {
-      router.push({
-        name: modulesStore.firstAvailableModule.name,
-      });
-    }
-    appInitiated.value = true;
-  }, 1000);
+  appInitiated.value = true;
 }
 
 onMounted(initApp);

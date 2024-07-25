@@ -1,4 +1,8 @@
-import type { AppModule } from '@/dto/modules';
+import type {
+  AppModule,
+  BackendModuleDescription,
+  FrontModuleDescription,
+} from '@/dto/modules';
 import { AppModuleName } from '@/dto/modules';
 import { router } from '@/router';
 import { useModulesStore } from '@/stores/modules';
@@ -31,23 +35,30 @@ export function registerModuleInApp(moduleDescriptor: AppModule) {
   });
 }
 
-export async function registerAsyncModuleInApp(moduleName: AppModuleName) {
-  let module: null | AppModule;
+export async function registerAsyncModuleInApp(
+  moduleDescription: BackendModuleDescription,
+) {
+  const { name } = moduleDescription;
+  let module: null | FrontModuleDescription;
 
   try {
     // calendar.descriptor.ts for vite will be able to make static analyze
-    module =
-      (await import(`./${moduleName}/${moduleName}.descriptor.ts`)).default ||
-      null;
+    module = (await import(`./${name}/${name}.descriptor.ts`)).default || null;
   } catch {
     module = null;
   }
 
   if (!module) {
     // eslint-disable-next-line no-console
-    console.warn(`Can't register ${moduleName} module!`);
+    console.warn(`Can't register ${name} module!`);
     return;
   }
 
-  registerModuleInApp(module);
+  registerModuleInApp({
+    routes: module.routes,
+    storeModule: {
+      ...moduleDescription,
+      rootRoute: module.rootRoute,
+    },
+  });
 }

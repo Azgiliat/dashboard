@@ -1,11 +1,9 @@
 import type { User } from 'firebase/auth';
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 import type { CreateWithEmailCredentials, LoginCredentials } from '@/dto/auth';
-import type { AppModuleName } from '@/dto/modules';
-import { getAuthObserver } from '@/firebase/auth';
-import { loadUserModules } from '@/http/externalUserInfo';
+import { auth, getAuthObserver } from '@/firebase/auth';
 import {
   loginRequest,
   logoutRequest,
@@ -13,18 +11,13 @@ import {
 } from '@/http/login';
 
 export const useLoginStore = defineStore('login', () => {
-  const localUser = localStorage.getItem('fb-user');
-  const userModules = ref<AppModuleName[]>([]);
-  const user = ref<User | null>(localUser ? JSON.parse(localUser) : null);
-  const setUser = (newUser: User | null) => {
-    user.value = newUser;
+  const user = ref<User | null>(auth.currentUser);
 
-    if (newUser === null) {
-      localStorage.removeItem('fb-user');
-    } else {
-      localStorage.setItem('fb-user', JSON.stringify(newUser));
-    }
-  };
+  const initialAuthCheckFinished = ref(false);
+
+  function setUser(newUser: User | null) {
+    user.value = newUser;
+  }
   function login(credentials: LoginCredentials) {
     return loginRequest(credentials);
   }
@@ -34,24 +27,36 @@ export const useLoginStore = defineStore('login', () => {
   function registerNewUserWithEmail(credentials: CreateWithEmailCredentials) {
     return registerWithEmailRequest(credentials);
   }
-  async function fetchUserModules() {
-    if (!user.value) {
+
+  async function checkInitAuth() {
+    if (initialAuthCheckFinished.value) {
       return;
     }
 
-    try {
-      userModules.value = await loadUserModules(user.value.uid);
-    } catch {}
+    await new Promise((resolve) => {
+      const stop = watch(initialAuthCheckFinished, () => {
+        stop();
+        setTimeout(() => {
+          resolve(true);
+        }, 1000);
+      });
+    });
   }
 
-  getAuthObserver(setUser);
+  getAuthObserver((user) => {
+    setUser(user);
+
+    if (!initialAuthCheckFinished.value) {
+      initialAuthCheckFinished.value = true;
+    }
+  });
 
   return {
     user,
-    userModules,
     login,
     logout,
     registerNewUserWithEmail,
-    fetchUserModules,
+    initialAuthCheckFinished,
+    checkInitAuth,
   };
 });

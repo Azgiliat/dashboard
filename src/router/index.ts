@@ -23,8 +23,12 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach((to) => {
+router.beforeResolve(async (to) => {
   const userStore = useLoginStore();
+
+  if (!userStore.initialAuthCheckFinished) {
+    await userStore.checkInitAuth();
+  }
 
   if (to.name !== LoginRouteName.LOGIN && !userStore.user) {
     return {
