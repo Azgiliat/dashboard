@@ -6,7 +6,7 @@ import { Layout } from '@/layouts/layouts';
 import { useLoginStore } from '@/stores/login';
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/dashboard/'),
   routes: [
     {
       path: '/',

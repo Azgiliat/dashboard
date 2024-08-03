@@ -1,5 +1,5 @@
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+name: Deploy
 
 on:
   # Runs on pushes targeting the default branch
@@ -8,6 +8,10 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Lint & build"]
+    types:
+      - completed
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -24,23 +28,30 @@ concurrency:
 jobs:
   # Build job
   build:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Build yarn
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
       - run: yarn install
       - run: yarn build
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
+        env:
+          VITE_API_KEY: ${{vars.VITE_API_KEY}}
+          VITE_AUTH_DOMAIN : ${{vars.VITE_AUTH_DOMAIN}}
+          VITE_PROJECT_ID: ${{vars.VITE_PROJECT_ID}}
+          VITE_STORAGE_BUCKET: ${{vars.VITE_STORAGE_BUCKET}}
+          VITE_MESSAGING_SENDER_ID: ${{vars.VITE_MESSAGING_SENDER_ID}}
+          VITE_APP_ID: ${{vars.VITE_APP_ID}}
+          VITE_DATABASE_URL: ${{vars.VITE_DATABASE_URL}}
+      - uses: actions/jekyll-build-pages@v1
         with:
           source: ./dist
           destination: ./_site
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
 
   # Deployment job
   deploy:
