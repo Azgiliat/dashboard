@@ -1,13 +1,25 @@
 @import url("./cairo-font.css");
 @import url("./open-sans-font.css");
+@import "tailwindcss";
 
-@tailwind base;
+@theme {
+  --font-primary: Cairo, sans;
+  --font-secondary: Open Sans;
+  /*
+  */
+  --color-primary: #6418C3;
+  --color-secondary: #5ECFFF;
+  --color-accent: #E328AF;
+  --color-fine: #38E25D;
+  --color-error: #FF4A55;
+  --color-warning: #FFAB2D;
+  --color-gray1: #A5A5A5;
+  --color-gray2: #C2C2C2;
+  --color-gray3: #F5F5F5
+}
 
 @layer base {
   html {
     @apply font-primary;
   }
 }
-
-@tailwind components;
-@tailwind utilities;

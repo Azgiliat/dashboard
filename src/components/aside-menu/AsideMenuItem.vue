@@ -1,5 +1,8 @@
 <template>
-  <div
+  <router-link
+    :to="{
+      name: module.rootRoute,
+    }"
     class="flex items-center text-gray1 hover:cursor-pointer hover:text-primary"
   >
     <dsh-icon
@@ -9,7 +12,7 @@
     <span class="text-lg font-semibold transition-colors">{{
       module.name
     }}</span>
-  </div>
+  </router-link>
 </template>
 
 <script setup lang="ts">

@@ -3,14 +3,12 @@ import type {
   BackendModuleDescription,
   FrontModuleDescription,
 } from '@/dto/modules';
-import { AppModuleName } from '@/dto/modules';
+import type { AppModuleName } from '@/dto/modules';
 import { router } from '@/router';
 import { useModulesStore } from '@/stores/modules';
 
 function checkModuleAvailability(moduleName: AppModuleName) {
   switch (moduleName) {
-    case AppModuleName.CONTACTS:
-      return false;
     default:
       return true;
   }

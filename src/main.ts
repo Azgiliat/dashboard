@@ -6,6 +6,6 @@ import { createApp } from 'vue';
 import { router } from '@/router';
 import { pinia } from '@/stores';
 
-const app = createApp(App).use(pinia).use(router);
+const app = createApp(App).use(router).use(pinia);
 
 app.mount('#app');

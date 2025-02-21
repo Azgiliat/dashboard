@@ -4,11 +4,7 @@ import { ref, watch } from 'vue';
 
 import type { CreateWithEmailCredentials, LoginCredentials } from '@/dto/auth';
 import { auth, getAuthObserver } from '@/firebase/auth';
-import {
-  loginRequest,
-  logoutRequest,
-  registerWithEmailRequest,
-} from '@/http/login';
+import { loginRequest, logoutRequest, registerWithEmail } from '@/http/auth';
 
 export const useLoginStore = defineStore('login', () => {
   const user = ref<User | null>(auth.currentUser);
@@ -25,7 +21,7 @@ export const useLoginStore = defineStore('login', () => {
     return logoutRequest();
   }
   function registerNewUserWithEmail(credentials: CreateWithEmailCredentials) {
-    return registerWithEmailRequest(credentials);
+    return registerWithEmail(credentials);
   }
 
   async function checkInitAuth() {

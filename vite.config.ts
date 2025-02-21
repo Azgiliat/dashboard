@@ -2,6 +2,7 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
+import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
@@ -9,6 +10,7 @@ export default defineConfig({
   base: '/dashboard/',
   plugins: [
     vue(),
+    tailwindcss(),
     createSvgIconsPlugin({
       iconDirs: [path.resolve(__dirname, 'src/assets/icons')],
       symbolId: '[name]',

@@ -17,7 +17,8 @@
           "apply",
           "variants",
           "responsive",
-          "screen"
+          "screen",
+          "theme"
         ]
       }
     ],
