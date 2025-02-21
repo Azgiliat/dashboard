@@ -1,48 +1,27 @@
-import html from 'eslint-plugin-html';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import eslintVue from 'eslint-plugin-vue';
 import globals from 'globals';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import parser from 'vue-eslint-parser';
+import tseslint from 'typescript-eslint';
 
-import { fixupConfigRules } from '@eslint/compat';
-import { FlatCompat } from '@eslint/eslintrc';
-import js from '@eslint/js';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
+import eslintJs from '@eslint/js';
 
 export default [
   {
     ignores: ['**/node_modules', 'coverage', 'dist', 'tmp'],
   },
-  ...fixupConfigRules(
-    compat.extends(
-      'plugin:@typescript-eslint/recommended',
-      'plugin:vue/vue3-recommended',
-      'prettier',
-    ),
-  ),
+  eslintJs.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...eslintVue.configs['flat/recommended'],
+  eslintConfigPrettier,
   {
-    plugins: {
-      html,
-    },
-
     languageOptions: {
       globals: {
-        ...globals.node,
+        ...globals.browser,
       },
-
-      parser: parser,
-      ecmaVersion: 2021,
+      ecmaVersion: 'latest',
       sourceType: 'module',
-
       parserOptions: {
-        parser: '@typescript-eslint/parser',
+        parser: tseslint.parser,
       },
     },
 
@@ -58,10 +37,10 @@ export default [
       ],
     },
   },
-  {
-    files: ['**/*.spec.ts'],
-    rules: {
-      '@typescript-eslint/no-explicit-any': 'off',
-    },
-  },
+  // {
+  //   files: ['**/*.spec.ts'],
+  //   rules: {
+  //     '@typescript-eslint/no-explicit-any': 'off',
+  //   },
+  // },
 ];

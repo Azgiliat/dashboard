@@ -1,5 +1,6 @@
 import type { CreateWithEmailCredentials, LoginCredentials } from '@/dto/auth';
 import { login, logout, registerNewUserWithEmail } from '@/firebase/auth';
+import { initiateNewUser } from '@/firebase/backend-actions/initiateNewUser';
 import { baseRequest } from '@/http/base';
 
 export function loginRequest(credentials: LoginCredentials) {
@@ -10,8 +11,13 @@ export function logoutRequest() {
   return baseRequest(logout);
 }
 
-export function registerWithEmailRequest(
+export async function registerWithEmail(
   credentials: CreateWithEmailCredentials,
 ) {
-  return baseRequest(() => registerNewUserWithEmail(credentials));
+  const registeredUser = await baseRequest(() =>
+    registerNewUserWithEmail(credentials),
+  );
+  await baseRequest(() => initiateNewUser(registeredUser.user.uid));
+
+  return registeredUser;
 }

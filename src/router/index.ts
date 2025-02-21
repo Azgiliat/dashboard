@@ -2,6 +2,7 @@ import loginRoutes, { LoginRouteName } from './login';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import BlankScreen from '@/components/BlankScreen';
+import { getAuthObserver } from '@/firebase/auth';
 import { Layout } from '@/layouts/layouts';
 import { useLoginStore } from '@/stores/login';
 
@@ -34,6 +35,15 @@ router.beforeResolve(async (to) => {
     return {
       name: LoginRouteName.LOGIN,
     };
+  }
+});
+
+// todo track it globally? potentially need to overwrite this behaviour in future in some cases
+getAuthObserver((user) => {
+  if (!user) {
+    router.push({
+      name: LoginRouteName.LOGIN,
+    });
   }
 });
 
